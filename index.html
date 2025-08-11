@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8" />
+    <title>دعوة الفرح</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            background-color: #fdfdfd;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* مركز عمودي */
+            align-items: center;     /* مركز أفقي */
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #invitationImage {
+            margin-top: 20px; /* يبقى تحت الرسالة */
+            max-width: 90%;
+            max-height: 400px;
+            border: 2px solid #ccc;
+            box-shadow: 0 0 10px #aaa;
+            display: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>هل أنت مدعو للفرح؟ 🎉</h1>
+    <input type="text" id="phoneInput" placeholder="ادخل رقم تليفونك" />
+    <button onclick="checkInvitation()">تحقق</button>
+
+    <div id="message"></div>
+    <img id="invitationImage" src="" alt="دعوة الفرح" />
+
+    <script>
+        // قائمة أرقام المدعوين
+        const invitedPhones = [
+            "01012345678",
+            "01198765432",
+            "01234567890"
+        ];
+
+        function checkInvitation() {
+            const phone = document.getElementById("phoneInput").value.trim();
+            const messageDiv = document.getElementById("message");
+            const image = document.getElementById("invitationImage");
+
+            if (invitedPhones.includes(phone)) {
+                messageDiv.innerHTML = "🎉 مبروك! دي دعوتك الخاصة!";
+                messageDiv.style.color = "green";
+                image.src = `images/${phone}.png`;
+                image.style.display = "block";
+            } else {
+                messageDiv.innerHTML = "🚫 أنا معزمتكش يا صاحبي!";
+                messageDiv.style.color = "red";
+                image.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
